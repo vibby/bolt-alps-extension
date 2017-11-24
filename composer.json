@@ -4,16 +4,16 @@
     "type": "bolt-extension",
     "keywords": [
     ],
-//    "require": {
-//        "adventistchurch/alps": "@dev-master"
-//    },
+    "require": {
+        "adventistchurch/alps": "@dev-master"
+    },
     "require-dev": {
         "phpunit/phpunit": "^4.7"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/adventistchurch/alps"
+            "url": "https://github.com/vibby/alps"
         }
     ],
     "license": "MIT",
