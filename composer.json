@@ -5,6 +5,7 @@
     "keywords": [
     ],
     "require": {
+        "bolt/bolt": "^3.0",
         "adventistchurch/alps": "dev-master"
     },
     "require-dev": {
