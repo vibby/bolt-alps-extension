@@ -5,7 +5,7 @@
     "keywords": [
     ],
     "require": {
-        "adventistchurch/alps": "@dev-master"
+        "adventistchurch/alps": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.7"
