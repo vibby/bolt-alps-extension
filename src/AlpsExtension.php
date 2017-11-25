@@ -49,8 +49,23 @@ class AlpsExtension extends SimpleExtension
                     $twig->addGlobal($key, $data);
                 }
 
+                $twig->addGlobal('theme_config', $this->getConfig());
+
                 return $twig;
             }
         ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDefaultConfig()
+    {
+        return [
+            'color' => [
+                'primary'   => '#5e3929',
+                'secondary' => '#4d7549',
+            ],
+        ];
     }
 }
