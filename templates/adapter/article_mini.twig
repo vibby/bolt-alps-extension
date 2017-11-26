@@ -1,0 +1,14 @@
+
+{% set block = {
+    "block_inner_class": "block__row",
+    "title": record.title,
+    "img": {
+        "src": image(record.image, 200, 200),
+        "alt": record.title,
+    },
+    "datetime": false,
+    "date": false,
+    "description": record.teaser,
+    "cta": record.title,
+} %}
+{% include '@molecules/blocks/media-block.twig' with {'media_block_default': block} %}

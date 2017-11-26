@@ -2,6 +2,7 @@
 
 namespace Bolt\Extension\Vibby\Alps;
 
+use Bolt\Extension\Vibby\Alps\Command\ImportCommand;
 use Silex\Application;
 use Bolt\Extension\SimpleExtension;
 
@@ -29,6 +30,7 @@ class AlpsExtension extends SimpleExtension
                 $twigLoader->addPath(dirname(__DIR__).'/templates/_patterns/01-molecules', 'molecules');
                 $twigLoader->addPath(dirname(__DIR__).'/templates/_patterns/02-organisms', 'organisms');
                 $twigLoader->addPath(dirname(__DIR__).'/templates/_patterns/03-templates', 'templates');
+                $twigLoader->addPath(dirname(__DIR__).'/templates/adapter', 'adapter');
                 // level 2 : take ALPS template, if previous not found
                 $twigLoader->addPath($alpsPath.'source/_patterns/00-atoms', 'atoms');
                 $twigLoader->addPath($alpsPath.'source/_patterns/01-molecules', 'molecules');
