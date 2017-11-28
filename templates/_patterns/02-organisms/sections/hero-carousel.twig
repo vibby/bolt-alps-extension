@@ -1,0 +1,47 @@
+
+
+{% setcontent records = theme.queries.carousel %}
+{% set slides = [] %}
+{% for record in records %}
+    {% set picture = {
+        "img_break_m": "500",
+        "img": {
+            "alt": record.title,
+            "src_s": record.image|thumbnail(500, 500, 'c'),
+            "src_m": record.image|thumbnail(700, 500, 'c')
+        },
+        "has_break_l": {
+            "img_break_l": "700",
+            "img": {
+                "src_l": record.image|thumbnail(900, 500, 'c')
+            }
+        },
+        "has_break_xl": {
+            "img_break_xl": "900",
+            "img": {
+                "src_xl": record.image|thumbnail(1300, 700, 'c')
+            }
+        }
+    } %}
+    {% set slide = [{
+        "has_slide_text": {
+            "slide_heading": record.title,
+            "slide_subtitle": record.subtitle,
+            "slide_dek": record.teaser,
+            "slide_cta": record.cta,
+            "btn_class": "btn--white"
+        },
+        "url": record.link,
+        "picture": picture,
+    }] %}
+    {% set slides = slides|merge(slide) %}
+{% endfor %}
+
+{% set carousel = {
+    "carousel_class": "js-carousel__single-item",
+    "no_arrows": true,
+    "slides2column": false,
+    "slides": slides
+} %}
+
+{% include '@organisms_source/sections/hero-carousel.twig' %}

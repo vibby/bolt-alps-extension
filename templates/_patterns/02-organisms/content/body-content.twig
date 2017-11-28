@@ -1,18 +1,42 @@
 <div class="spacing--double">
-  <div class="pad--primary spacing text">
-    <h2 class="font--tertiary--l theme--primary-text-color">{{ text.heading  | raw}}</h2>
-    <p class="intro font--primary--m">{{ text.intro  | raw}}</p>
-    {% include '@molecules/media/video-figure-with-caption.twig' with {'figure_class': 'size--large'} %}
-  </div>
+  {% setcontent records = theme.queries.home_video %}
+  {% for record in records %}
+    <div class="pad--primary spacing text">
+      <h2 class="font--tertiary--l theme--primary-text-color">{{ record.title }}</h2>
+      <p class="intro font--primary--m">{{ record.teaser }}</p>
+      {% include '@molecules/media/video-figure-with-caption.twig' with {'figure_class': 'size--large', 'caption': theme.video_caption} %}
+    </div>
+  {% endfor %}
 
   <hr>
+  {% setcontent records = theme.queries.home_main %}
   {% for record in records %}
     <div class="pad--primary spacing--half">
-        {% include '@adapter/article_mini.twig' with {'record': record} %}
+        {% include '@adapter/article_mini.twig' with {'record': record, "block_inner_class": "block__row"} %}
     </div>
     <hr />
   {% endfor %}
 
-  {% include '@molecules/blocks/story-block.twig' %}
+  {% setcontent records = theme.queries.home_story %}
+  {% for record in records %}
+    {% set story_block_default = {
+        "is_video": false,
+        "bg_img": "//unsplash.it/g/1100/1100?blur",
+        "title": record.title,
+        "subtitle": record.subtitle,
+        "img": {
+            "src": record.author_pic|thumbnail(130, 130),
+            "alt": record.title
+        },
+        "text_img": {
+            "src": record.cover|thumbnail(170, 250, 'f'),
+            "alt": record.title
+        },
+        "description": record.teaser,
+        "cta": record.cta,
+        "url": record.link,
+    } %}
+    {% include '@molecules/blocks/story-block.twig' %}
+  {% endfor %}
 
 </div>

@@ -1,8 +1,17 @@
 <div class="pad--primary spacing">
   {% include '@molecules/navigation/breadcrumbs.twig' %}
-  <div class="text article__body spacing">
-    {{ record.video.responsive }}
-    {{ record.body }}
-  </div>
+  {% if records is defined %}
+    {% for record in records %}
+      <div class="pad--primary spacing--half">
+          {% include '@adapter/article_mini.twig' with {'record': record, "block_inner_class": "block__row"} %}
+      </div>
+      <hr />
+    {% endfor %}
+  {% else %}
+    <div class="text article__body spacing">
+      {{ record.video.responsive }}
+      {{ record.body }}
+    </div>
+  {% endif %}
 </div>
 

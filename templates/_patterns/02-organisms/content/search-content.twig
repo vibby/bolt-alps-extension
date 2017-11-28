@@ -1,0 +1,33 @@
+<div class="search__results spacing--one-and-half">
+  <div class="search__options pad--primary no-pad--btm spacing--half">
+    <form action="" role="search" method="get" class="search__results__form ">
+      <fieldset>
+        <legend class="is-vishidden">Search</legend>
+        <div class="field-container field-container--inline">
+          <input type="search"
+               name="search"
+               class="search__results__input font--secondary--s"
+               placeholder="Recherche"
+               value="{{ app.request.query.get('search', app.request.query.get('q')) }}"
+          />
+          <button class="search__submit font--secondary--s upper theme--secondary-background-color">
+            Chercher
+          </button>
+        </div> <!-- /.field-container -->
+      </fieldset>
+    </form> <!-- /.search-form -->
+  </div>
+  <hr>
+  <div class="spacing--one-and-half">
+    {% for record in records %}
+      <div class="pad--primary no-pad--top no-pad--btm spacing--half text">
+        <h3 class="brown font--tertiary--l theme--primary-text-color"><a href="{{ record.link }}">{{ record.title }}</a></h3>
+        <p>{{ record.teaser }}</p>
+        {% if result.cta %}<a href="{{ record.link }}" class="btn font--secondary--s upper theme--secondary-background-color"><strong>{{ record.cta }}</strong></a> {% endif %}
+      </div>
+      <hr>
+    {% endfor %}
+    {{ pager(template = '@molecules/navigation/pagination.twig') }}
+  </div>
+</div> <!-- /.search__results -->
+

@@ -51,8 +51,6 @@ class AlpsExtension extends SimpleExtension
                     $twig->addGlobal($key, $data);
                 }
 
-                $twig->addGlobal('theme_config', $this->getConfig());
-
                 return $twig;
             }
         ));

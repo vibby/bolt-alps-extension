@@ -1,0 +1,14 @@
+<aside class="aside spacing--double">
+    <div class="pad--secondary spacing--double">
+        {% include '@molecules/forms/content-search.twig' %}
+
+        <h3 class="font--tertiary--m theme--secondary-text-color">Événements</h3>
+        {% setcontent events = theme.queries.aside %}
+        {% for record in events %}
+            {% include '@adapter/article_mini.twig' with {
+                'record': record,
+                'block_inner_class': 'block__row--small-to-large',
+            } %}
+        {% endfor %}
+    </div>
+</aside>

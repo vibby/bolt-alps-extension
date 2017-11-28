@@ -1,0 +1,15 @@
+{% if content_filter %}
+<div class="filter spacing">
+  <div class="filter-search">
+    <h3 class="font--secondary--m upper theme--primary-text-color space-half--btm"><strong>Chercher</strong></h3>
+    <form action="search" role="search" method="get" class="filter-search">
+      <fieldset>
+        <div class="field-container spacing--half">
+          <input type="search" name="search" class="search__results__input font--secondary--s" value="" />
+          <button class="search__submit font--secondary--s upper theme--secondary-background-color">OK</button> <!-- /.search-form__submit -->
+        </div> <!-- /.field-container -->
+      </fieldset>
+    </form> <!-- /.search-form -->
+  </div>
+</div>
+{% endif %}

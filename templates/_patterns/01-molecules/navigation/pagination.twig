@@ -1,0 +1,12 @@
+
+{% set pager = {
+    "link": pager.makelink(),
+    "current": pager.current,
+    "next": "Suivant &rarr;",
+    "prev": "&larr; Précédent",
+    "surr": surr,
+    "totalpages": pager.totalpages,
+    "ellipsis" : "…"
+} %}
+
+{% include '@molecules_source/navigation/pagination.twig' %}
