@@ -2,6 +2,7 @@
 
 namespace Bolt\Extension\Vibby\Alps;
 
+use Bolt\Asset\Widget\Widget;
 use Bolt\Extension\Vibby\Alps\Command\ImportCommand;
 use Silex\Application;
 use Bolt\Extension\SimpleExtension;
@@ -59,13 +60,29 @@ class AlpsExtension extends SimpleExtension
     /**
      * {@inheritdoc}
      */
-    protected function getDefaultConfig()
+    protected function registerNutCommands(\Pimple $container)
     {
         return [
-            'color' => [
-                'primary'   => '#5e3929',
-                'secondary' => '#4d7549',
-            ],
+            new ImportCommand(),
         ];
+    }
+
+    protected function registerAssets()
+    {
+        $widgetObj = new Widget();
+        $widgetObj
+            ->setZone('frontend')
+            ->setLocation('aside_top')
+            ->setCallback([$this, 'getSabbathsWidget'])
+            ->setCallbackArguments([])
+            ->setDefer(true)
+        ;
+
+        return [ $widgetObj ];
+    }
+
+    public function getSabbathsWidget()
+    {
+        return $this->renderTemplate('widget_sabbaths.twig');
     }
 }
