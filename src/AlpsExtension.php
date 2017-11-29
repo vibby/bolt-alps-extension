@@ -31,7 +31,6 @@ class AlpsExtension extends SimpleExtension
                 $twigLoader->addPath(dirname(__DIR__).'/templates/_patterns/01-molecules', 'molecules');
                 $twigLoader->addPath(dirname(__DIR__).'/templates/_patterns/02-organisms', 'organisms');
                 $twigLoader->addPath(dirname(__DIR__).'/templates/_patterns/03-templates', 'templates');
-                $twigLoader->addPath(dirname(__DIR__).'/templates/adapter', 'adapter');
                 // level 2 : take ALPS template, if previous not found
                 $twigLoader->addPath($alpsPath.'source/_patterns/00-atoms', 'atoms');
                 $twigLoader->addPath($alpsPath.'source/_patterns/01-molecules', 'molecules');
@@ -44,6 +43,9 @@ class AlpsExtension extends SimpleExtension
                 $twigLoader->addPath($alpsPath.'source/_patterns/03-templates', 'templates_source');
                 $twigChainLoader->addLoader($twigLoader);
                 $twig->setLoader($twigChainLoader);
+
+                $twigLoader->addPath(dirname(__DIR__).'/templates/adapter', 'adapter');
+                $twigLoader->addPath(dirname(__DIR__).'/templates/widgets', 'widgets');
 
                 // Define all defaults data from ALPS json
                 $alpsConfig = json_decode(file_get_contents($alpsPath.'/source/_data/data.json'), true);
@@ -73,16 +75,16 @@ class AlpsExtension extends SimpleExtension
         $widgetObj
             ->setZone('frontend')
             ->setLocation('aside_top')
-            ->setCallback([$this, 'getSabbathsWidget'])
+            ->setCallback([$this, 'getPlanningWidget'])
             ->setCallbackArguments([])
-            ->setDefer(true)
+            ->setDefer(false)
         ;
 
         return [ $widgetObj ];
     }
 
-    public function getSabbathsWidget()
+    public function getPlanningWidget()
     {
-        return $this->renderTemplate('widget_sabbaths.twig');
+        return $this->renderTemplate('@widgets/planning.twig');
     }
 }
