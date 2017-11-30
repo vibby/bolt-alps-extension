@@ -1,13 +1,41 @@
 <div class="pad--primary spacing">
-  {% include '@molecules/navigation/breadcrumbs.twig' %}
   {% if records is defined %}
+      {% set breadcrumbs = {'items':[
+          {
+              'text': 'Accueil',
+              'url': '/',
+          },
+          {
+              'text': records|first.contenttype.name,
+              'url': records|first.contenttype.slug,
+          },
+      ]} %}
+      {% include '@molecules/navigation/breadcrumbs.twig' %}
     {% for record in records %}
       <div class="pad--primary spacing--half">
-          {% include '@adapter/article_mini.twig' with {'record': record, "block_inner_class": "block__row"} %}
+          {% include 'record/record.twig' with {'record': record, "block_inner_class": "block__row"} %}
       </div>
       <hr />
     {% endfor %}
+    {% if dates is not defined %}
+        {{ pager(template = '@molecules/navigation/pagination.twig') }}
+    {% endif %}
   {% else %}
+    {% set breadcrumbs = {'items':[
+        {
+            'text': 'Accueil',
+            'url': '/',
+        },
+        {
+            'text': record.contenttype.name,
+            'url': record.contenttype.slug,
+        },
+        {
+            'text': record.title,
+            'url': record.slug,
+        },
+    ]} %}
+    {% include '@molecules/navigation/breadcrumbs.twig' %}
     <div class="text article__body spacing">
       {{ record.video.responsive }}
       {{ record.body }}

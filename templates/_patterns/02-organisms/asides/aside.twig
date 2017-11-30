@@ -7,9 +7,10 @@
         <h3 class="font--tertiary--m theme--secondary-text-color">Événements</h3>
         {% setcontent events = theme.queries.aside %}
         {% for record in events %}
-            {% include '@adapter/article_mini.twig' with {
+            {% include 'record/record.twig' with {
                 'record': record,
                 'block_inner_class': 'block__row--small-to-large',
+                'record_template': '@molecules/blocks/media-block.twig',
             } %}
         {% endfor %}
     </div>

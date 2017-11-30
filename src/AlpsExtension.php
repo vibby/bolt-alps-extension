@@ -44,7 +44,6 @@ class AlpsExtension extends SimpleExtension
                 $twigChainLoader->addLoader($twigLoader);
                 $twig->setLoader($twigChainLoader);
 
-                $twigLoader->addPath(dirname(__DIR__).'/templates/adapter', 'adapter');
                 $twigLoader->addPath(dirname(__DIR__).'/templates/widgets', 'widgets');
 
                 // Define all defaults data from ALPS json

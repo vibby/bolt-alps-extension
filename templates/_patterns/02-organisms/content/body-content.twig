@@ -12,7 +12,7 @@
   {% setcontent records = theme.queries.home_main %}
   {% for record in records %}
     <div class="pad--primary spacing--half">
-        {% include '@adapter/article_mini.twig' with {'record': record, "block_inner_class": "block__row"} %}
+        {% include 'record/record.twig' with {'record': record, "block_inner_class": "block__row"} %}
     </div>
     <hr />
   {% endfor %}
@@ -21,7 +21,7 @@
   {% for record in records %}
     {% set story_block_default = {
         "is_video": false,
-        "bg_img": "//unsplash.it/g/1100/1100?blur",
+        "bg_img": asset('images/books-bg.jpeg', 'theme'),
         "title": record.title,
         "subtitle": record.subtitle,
         "img": {
@@ -38,5 +38,4 @@
     } %}
     {% include '@molecules/blocks/story-block.twig' %}
   {% endfor %}
-
 </div>
