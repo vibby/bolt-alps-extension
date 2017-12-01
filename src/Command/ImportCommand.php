@@ -29,7 +29,7 @@ class ImportCommand extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $contentTypes = ['pages', 'articles', 'planning', 'livres', 'liens', 'evenements', 'predications'];
+        $contentTypes = ['pages', 'articles', 'planning', 'liens', 'evenements', 'predications'];
         foreach ($contentTypes as $contentType) {
             $existings = $this->app['storage']->getContent($contentType);
             if (!$existings) {
