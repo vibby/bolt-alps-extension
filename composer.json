@@ -5,7 +5,7 @@
     "keywords": [
     ],
     "require": {
-        "vibby/alps": "dev-requireless"
+        "adventistchurch/alps": "dev-requireless"
     },
     "require-dev": {
         "bolt/bolt": "^3.0",        
