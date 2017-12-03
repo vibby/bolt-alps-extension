@@ -47,7 +47,7 @@ class AlpsExtension extends SimpleExtension
                 $twig->setLoader($twigChainLoader);
 
                 // Define all defaults data from ALPS json
-                $alpsConfig = json_decode(file_get_contents($alpsPath.'/source/_data/data.json'), true);
+                $alpsConfig = json_decode(file_get_contents($alpsPath.'source/_data/data.json'), true);
                 $alpsConfig['image_path'] = '//cdn.adventist.org/alps/2/latest/images/';
                 foreach ($alpsConfig as $key => $data) {
                     $twig->addGlobal($key, $data);
