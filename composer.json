@@ -5,7 +5,7 @@
     "keywords": [
     ],
     "require": {
-        "vibby/bolt-alps-theme": "dev-requireless"
+        "vibby/alps": "dev-requireless"
     },
     "require-dev": {
         "bolt/bolt": "^3.0",        
