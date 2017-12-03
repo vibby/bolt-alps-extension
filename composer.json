@@ -8,6 +8,7 @@
         "adventistchurch/alps": "dev-master"
     },
     "require-dev": {
+        "bolt/bolt": "^3.0",        
         "phpunit/phpunit": "^4.7"
     },
     "repositories": [
