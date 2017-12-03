@@ -5,7 +5,7 @@
     "keywords": [
     ],
     "require": {
-        "adventistchurch/alps": "dev-master"
+        "vibby/bolt-alps-theme": "dev-requireless"
     },
     "require-dev": {
         "bolt/bolt": "^3.0",        
