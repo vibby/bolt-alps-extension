@@ -5,7 +5,8 @@
     "keywords": [
     ],
     "require": {
-        "adventistchurch/alps": "dev-requireless"
+        "adventistchurch/alps": "dev-requireless",
+        "twig/extensions": "^1.5"
     },
     "require-dev": {
         "bolt/bolt": "^3.0",        
