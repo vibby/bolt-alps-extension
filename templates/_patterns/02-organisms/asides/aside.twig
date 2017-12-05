@@ -5,7 +5,7 @@
         {% include '@molecules/forms/content-search.twig' %}
 
         <h3 class="font--tertiary--m theme--secondary-text-color">Événements</h3>
-        {% setcontent events = theme.queries.aside %}
+        {% setcontent events = alps.queries.aside %}
         {% for record in events %}
             {% include 'record/record.twig' with {
                 'record': record,

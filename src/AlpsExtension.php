@@ -16,7 +16,7 @@ class AlpsExtension extends SimpleExtension
 {
     protected function registerServices(Application $app)
     {
-        setlocale (LC_TIME, 'fr_FR.utf8','fra');
+        setlocale (LC_TIME, $this->getConfig()['php_locale'][0], $this->getConfig()['php_locale'][1]);
 
         $app['twig'] = $app->share($app->extend(
             'twig',
@@ -48,12 +48,13 @@ class AlpsExtension extends SimpleExtension
 
                 // Define all defaults data from ALPS json
                 $alpsConfig = json_decode(file_get_contents($alpsPath.'source/_data/data.json'), true);
-                $alpsConfig['image_path'] = '//cdn.adventist.org/alps/2/latest/images/';
+                $alpsConfig['logo_bottom_text']['text'] =  $this->getConfig()['logo_text'];
                 foreach ($alpsConfig as $key => $data) {
                     $twig->addGlobal($key, $data);
                 }
 
-                $twig->addExtension(new \Twig_Extensions_Extension_Intl());
+                $twig->addGlobal('alps', $this->getConfig());
+                $twig->addGlobal('image_path', $this->getConfig()['path_cdn'].'images/');
 
                 return $twig;
             }
@@ -87,5 +88,19 @@ class AlpsExtension extends SimpleExtension
     public function getPlanningWidget()
     {
         return $this->renderTemplate('widgets/planning.twig');
+    }
+
+    public function registerTwigFilters()
+    {
+        return [
+            'humanizeDate' => 'humanizeDate',
+        ];
+    }
+
+    public function humanizeDate($dateTime)
+    {
+        $dateTime = ($dateTime instanceof \DateTime) ? $dateTime->format('U') : strtotime($dateTime);
+
+        return ucwords(strftime($this->getConfig()['date_format'], $dateTime));
     }
 }

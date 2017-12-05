@@ -1,6 +1,6 @@
 
 {% set footer = {
-    "text": "Nantes-Adventiste.com est le site officiel de l’église Adventiste du Septième Jour de Nantes",
+    "text": alps.footer_message,
     "links": [
         {
             "url": "https://www.adventist.org/fr/",
@@ -9,14 +9,14 @@
     ]
 } %}
 {% set subfooter = {
-    "text": "Copyright ©2016, Conférence Générale de l’Église Adventiste du Septième Jour",
+    "text": alps.subfooter_message,
     "address": {
-        "address": "42 Boulevard Auguste Péneau",
-        "locality": "Nantes",
+        "address": alps.address.address,
+        "locality": alps.address.locality,
         "region": "",
-        "postcode": "44300",
-        "country": "France",
-        "phonenumber": "02.40.49.65.18"
+        "postcode": alps.address.postcode,
+        "country": alps.address.country,
+        "phonenumber": alps.address.phonenumber
     }
 } %}
 

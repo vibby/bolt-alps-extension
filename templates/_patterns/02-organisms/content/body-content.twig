@@ -1,15 +1,15 @@
 <div class="spacing--double">
-  {% setcontent records = theme.queries.home_video %}
+  {% setcontent records = alps.queries.home_video %}
   {% for record in records %}
     <div class="pad--primary spacing text">
       <h2 class="font--tertiary--l theme--primary-text-color">{{ record.title }}</h2>
       <p class="intro font--primary--m">{{ record.teaser }}</p>
-      {% include '@molecules/media/video-figure-with-caption.twig' with {'figure_class': 'size--large', 'caption': theme.video_caption} %}
+      {% include '@molecules/media/video-figure-with-caption.twig' with {'figure_class': 'size--large', 'caption': alps.video_caption} %}
     </div>
   {% endfor %}
 
   <hr>
-  {% setcontent records = theme.queries.home_main %}
+  {% setcontent records = alps.queries.home_main %}
   {% for record in records %}
     <div class="pad--primary spacing--half">
         {% include 'record/record.twig' with {'record': record, "block_inner_class": "block__row"} %}
@@ -17,7 +17,7 @@
     <hr />
   {% endfor %}
 
-  {% setcontent records = theme.queries.home_story %}
+  {% setcontent records = alps.queries.home_story %}
   {% for record in records %}
     {% set story_block_default = {
         "is_video": false,
