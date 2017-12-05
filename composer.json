@@ -5,10 +5,10 @@
     "keywords": [
     ],
     "require": {
+        "bolt/bolt": "^3.0",
         "adventistchurch/alps": "dev-requireless"
     },
     "require-dev": {
-        "bolt/bolt": "^3.0",        
         "phpunit/phpunit": "^4.7"
     },
     "repositories": [
@@ -24,8 +24,6 @@
             "email": "vincent@beauvivre.fr"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Bolt\\Extension\\Vibby\\Alps\\": "src"
