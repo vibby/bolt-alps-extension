@@ -4,8 +4,12 @@ namespace Bolt\Extension\Vibby\Alps;
 
 use Bolt\Asset\Widget\Widget;
 use Bolt\Extension\Vibby\Alps\Command\ImportCommand;
+use Bolt\Menu\MenuEntry;
+use Silex\ControllerCollection;
 use Silex\Application;
 use Bolt\Extension\SimpleExtension;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * ExtensionName extension class.
@@ -102,5 +106,28 @@ class AlpsExtension extends SimpleExtension
         $dateTime = ($dateTime instanceof \DateTime) ? $dateTime->format('U') : strtotime($dateTime);
 
         return ucwords(strftime($this->getConfig()['date_format'], $dateTime));
+    }
+
+    protected function registerMenuEntries()
+    {
+        $menu = new MenuEntry('dates-menu', '/bolt/dates');
+        $menu->setLabel('Dates Importer')
+            ->setIcon('fa:calendar')
+            ->setPermission('settings')
+        ;
+
+        return [
+            $menu,
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function registerBackendControllers()
+    {
+        return [
+            '/dates' => new Controller\DatesController(),
+        ];
     }
 }

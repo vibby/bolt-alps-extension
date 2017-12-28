@@ -39,6 +39,9 @@
     <div class="text article__body spacing">
       {{ record.video.responsive }}
       {{ record.body }}
+      {% if record.form is defined and record.form %}
+        {{ boltforms(record.form|safestring) }}
+      {% endif %}
     </div>
   {% endif %}
 </div>
